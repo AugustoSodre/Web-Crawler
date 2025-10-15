@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document
 import java.text.SimpleDateFormat
 
 class Task02 {
+    //Objetivo: Resgatar o Histórico das versões dos Componentes do Padrão TISS da ANSS desde Jan/2016
 
      void crawl() {
         //Initialization
@@ -31,14 +32,14 @@ class Task02 {
             println(row)
         }
 
-         CSV_Creator.create("test.csv", table_head as String[], table_data as String[])
+         CSV_Creator.create("historico_componentes_padrao_TISS.csv", table_head as String[], table_data as String[])
 
     }
 
     List getTableHeadText(Document htmlText){
         def raw_table_head = htmlText.getElementsByTag("th")
 
-        return [raw_table_head[0].text(), raw_table_head[1].text(), raw_table_head[2].text()]
+        return [raw_table_head[0].text().toLowerCase(), raw_table_head[1].text().toLowerCase(), raw_table_head[2].text().toLowerCase()]
     }
 
     List getTableDataText(Document htmlText, String deadlineStr){
@@ -80,9 +81,9 @@ class Task02 {
                 }
 
                 def tempList = []
-                tempList.add(raw_table_data[i].text())
-                tempList.add(raw_table_data[i + 1].text())
-                tempList.add(raw_table_data[i + 2].text())
+                tempList.add(raw_table_data[i].text().toLowerCase())
+                tempList.add(raw_table_data[i + 1].text().toLowerCase())
+                tempList.add(raw_table_data[i + 2].text().toLowerCase())
 
                 table_data.add(tempList)
             } catch (Exception e){
