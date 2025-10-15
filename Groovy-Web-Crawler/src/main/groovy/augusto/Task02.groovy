@@ -35,7 +35,6 @@ class Task02 {
             println(row)
         }
 
-
     }
 
     List getTableHeadText(Document htmlText){
