@@ -1,12 +1,13 @@
-package augusto
+package augusto.tasks
 
+import augusto.helpers.CSV_Creator
 import groovyx.net.http.HttpBuilder
 import org.jsoup.nodes.Document
 
 import java.text.SimpleDateFormat
 
 class Task02 {
-    //Objetivo: Resgatar o Histórico das versões dos Componentes do Padrão TISS da ANSS desde Jan/2016
+    //Objetivo: Resgatar o Histórico das versões dos Componentes do Padrão TISS da ANSS desde Jan/2016 e salvar em arquivo CSV
 
      void crawl() {
         //Initialization
