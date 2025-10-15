@@ -7,10 +7,6 @@ import java.text.SimpleDateFormat
 
 class Task02 {
 
-    static void main(String[] args){
-        new Task02().crawl()
-    }
-
      void crawl() {
         //Initialization
         def http = HttpBuilder.configure { request.uri = 'https://www.gov.br/ans/pt-br/assuntos/prestadores/padrao-para-troca-de-informacao-de-saude-suplementar-2013-tiss/padrao-tiss-historico-das-versoes-dos-componentes-do-padrao-tiss' }
@@ -34,6 +30,8 @@ class Task02 {
         for (List row : table_data ) {
             println(row)
         }
+
+         CSV_Creator.create("test.csv", table_head as String[], table_data as String[])
 
     }
 
